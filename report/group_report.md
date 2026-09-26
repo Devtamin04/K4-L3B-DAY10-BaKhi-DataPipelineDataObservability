@@ -5,15 +5,15 @@
 | Thông tin         | Nội dung                  |
 | ------------------ | -------------------------- |
 | Khóa/Lớp         | [K4-L3B]              |
-| Tên nhóm         | [Tên hoặc mã nhóm]     |
-| Repository         | [Đường dẫn repository] |
+| Tên nhóm         | Bá khí     |
+| Repository         | https://github.com/Devtamin04/K4-L3B-DAY10-BaKhi-DataPipelineDataObservability |
 | Ngày hoàn thành | 2026-09-26               |
 
 ### Thành viên và phân công
 
 | STT | Họ và tên | MSSV | Vai trò chính | Module/deliverable sở hữu |
 | --: | --- | --- | --- | --- |
-| 1 | [Họ tên 1] | [MSSV 1] | Pipeline Integrator / Ingestion & Cleaning | `core/config.py`, `ingestion/crossref.py`, `ingestion/cleaning.py`, `ingestion/corruption.py`, `pipelines/phase1.py`, `observability/reporting.py` |
+| 1 | Nguyễn Quang Tuấn | 2A202602470 | Pipeline Integrator / Ingestion & Cleaning | `core/config.py`, `ingestion/crossref.py`, `ingestion/cleaning.py`, `ingestion/corruption.py`, `pipelines/phase1.py`, `observability/reporting.py` |
 | 2 | [Họ tên 2] | [MSSV 2] | Observability & Evaluation / Corruption Flow | `observability/quality.py`, `evaluation/testset.py`, `evaluation/metrics.py`, `pipelines/corruption_flow.py` |
 
 ## 2. Tóm tắt kết quả
