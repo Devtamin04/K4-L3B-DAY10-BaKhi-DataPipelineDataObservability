@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import UTC, datetime
+import html
 import json
 from pathlib import Path
 import re
@@ -36,6 +37,18 @@ def now_utc() -> datetime:
 
 def normalize_whitespace(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip()
+
+
+_JATS_TITLE_PATTERN = re.compile(r"<jats:title>.*?</jats:title>", re.DOTALL | re.IGNORECASE)
+_TAG_PATTERN = re.compile(r"<[^>]+>")
+
+
+def strip_markup(value: Any) -> str:
+    """Drop JATS headings and XML/HTML tags, unescape entities, collapse whitespace. Non-strings become ""."""
+    if not isinstance(value, str):
+        return ""
+    without_headings = _JATS_TITLE_PATTERN.sub(" ", value)
+    return normalize_whitespace(html.unescape(_TAG_PATTERN.sub(" ", without_headings)))
 
 
 def safe_slug(value: str) -> str:

@@ -7,6 +7,7 @@ from .utils import (
     now_utc,
     read_json,
     safe_slug,
+    strip_markup,
     write_csv,
     write_json,
     write_text,

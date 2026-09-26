@@ -1,25 +1,20 @@
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass, fields
-import html
 from pathlib import Path
-import re
 import time
 from typing import Any
 
 import requests
 
 from core.config import Settings
-from core.utils import normalize_whitespace, read_json, write_json
+from core.utils import normalize_whitespace, read_json, strip_markup, write_json
 
 CROSSREF_WORKS_URL = "https://api.crossref.org/works"
 CROSSREF_SELECT_FIELDS = "DOI,title,abstract,author,subject,published,created,deposited,URL,link"
 RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
 MAX_ATTEMPTS = 3
 REQUEST_TIMEOUT_SECONDS = 30
-
-_TAG_PATTERN = re.compile(r"<[^>]+>")
-_JATS_TITLE_PATTERN = re.compile(r"<jats:title>.*?</jats:title>", re.DOTALL | re.IGNORECASE)
 
 
 @dataclass(frozen=True)
@@ -38,13 +33,10 @@ class PaperRecord:
 
 
 def _clean_text(value: Any) -> str:
-    """Strip JATS/HTML tags, unescape entities and collapse whitespace."""
+    """Crossref wraps titles in a list; take the first entry and strip markup."""
     if isinstance(value, list):
         value = value[0] if value else ""
-    if not isinstance(value, str):
-        return ""
-    without_headings = _JATS_TITLE_PATTERN.sub(" ", value)
-    return normalize_whitespace(html.unescape(_TAG_PATTERN.sub(" ", without_headings)))
+    return strip_markup(value)
 
 
 def _format_date(date_obj: Any) -> str:
