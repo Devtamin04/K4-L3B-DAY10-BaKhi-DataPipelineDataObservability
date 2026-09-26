@@ -1,0 +1,107 @@
+{
+  "name": "baseline_papers_suite",
+  "id": "c279aa4a-de53-4c85-becd-fd5d841d8a3e",
+  "expectations": [
+    {
+      "type": "expect_table_row_count_to_be_between",
+      "kwargs": {
+        "min_value": 20,
+        "max_value": 24
+      },
+      "meta": {},
+      "id": "50c62ffc-e3cd-49d9-822c-739b0029114f",
+      "severity": "critical"
+    },
+    {
+      "type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "paper_id"
+      },
+      "meta": {},
+      "id": "a897b00f-0e76-4500-819e-7ede54e07bff",
+      "severity": "critical"
+    },
+    {
+      "type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "title"
+      },
+      "meta": {},
+      "id": "2fce35d7-0053-4ed9-9666-d31a54e3f492",
+      "severity": "critical"
+    },
+    {
+      "type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "summary"
+      },
+      "meta": {},
+      "id": "b220b561-98e6-48a8-8bfe-10c622399cd9",
+      "severity": "critical"
+    },
+    {
+      "type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "published"
+      },
+      "meta": {},
+      "id": "bb122a32-be69-4835-8fe1-9f96b0fea4e6",
+      "severity": "critical"
+    },
+    {
+      "type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "text_for_embedding"
+      },
+      "meta": {},
+      "id": "cccc9172-84bb-48d5-b04e-5d3b8363afd2",
+      "severity": "critical"
+    },
+    {
+      "type": "expect_column_values_to_be_unique",
+      "kwargs": {
+        "column": "paper_id"
+      },
+      "meta": {},
+      "id": "04ac4832-a2b1-41ec-a1c1-b8950fa15ca8",
+      "severity": "critical"
+    },
+    {
+      "type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "title",
+        "min_value": 8
+      },
+      "meta": {},
+      "id": "e1e31c88-7d68-4fc3-9d2b-e30cbe9e38a8",
+      "severity": "critical"
+    },
+    {
+      "type": "expect_column_value_lengths_to_be_between",
+      "kwargs": {
+        "column": "summary",
+        "min_value": 100,
+        "max_value": 5000
+      },
+      "meta": {},
+      "id": "b571544b-c920-4b8f-aa77-6957d2a1d37d",
+      "severity": "critical"
+    },
+    {
+      "type": "expect_column_values_to_be_between",
+      "kwargs": {
+        "column": "age_days",
+        "mostly": 0.75,
+        "min_value": 0.0,
+        "max_value": 180.0
+      },
+      "meta": {},
+      "id": "cafda17a-40cd-454a-af62-f2f211dfb207",
+      "severity": "critical"
+    }
+  ],
+  "meta": {
+    "great_expectations_version": "1.23.2"
+  },
+  "notes": null
+}
