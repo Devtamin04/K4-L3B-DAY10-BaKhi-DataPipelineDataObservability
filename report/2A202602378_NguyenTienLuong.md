@@ -4,12 +4,12 @@
 
 | Thông tin         | Nội dung                  |
 | ------------------ | -------------------------- |
-| Họ và tên       | [Họ và tên 2 — Luongday]             |
-| MSSV               | [MSSV 2]                     |
+| Họ và tên       | Nguyễn Tiến Lượng             |
+| MSSV               | 2A202602378                     |
 | Khóa/Lớp         | K4-L3B              |
-| Tên nhóm         | [Tên hoặc mã nhóm]     |
+| Tên nhóm         | Bá Khí     |
 | Vai trò chính    | Observability & Evaluation / RAG Index / Corruption-Repair Flow |
-| Repository         | [Đường dẫn repository] |
+| Repository         | ttps://github.com/Devtamin04/K4-L3B-DAY10-BaKhi-DataPipelineDataObservability.git |
 | Ngày hoàn thành | 2026-09-26               |
 
 ## 2. Vai trò và phạm vi công việc
@@ -148,5 +148,5 @@ Sẽ bật `RUN_RAGAS=1` để chạy thêm bộ chỉ số Ragas (`answer_relev
 - [x] Báo cáo không chứa `.env`, API key, token hoặc secret.
 - [x] Báo cáo này không phải bản sao nguyên văn của báo cáo nhóm hoặc báo cáo thành viên khác.
 
-**Họ và tên:** [Họ và tên 2 — Luongday]
+**Họ và tên:** Nguyễn Tiến Lượng
 **Ngày xác nhận:** 2026-09-26
