@@ -14,7 +14,7 @@
 | STT | Họ và tên | MSSV | Vai trò chính | Module/deliverable sở hữu |
 | --: | --- | --- | --- | --- |
 | 1 | Nguyễn Quang Tuấn | 2A202602470 | Pipeline Integrator / Ingestion & Cleaning | `core/config.py`, `ingestion/crossref.py`, `ingestion/cleaning.py`, `ingestion/corruption.py`, `pipelines/phase1.py`, `observability/reporting.py` |
-| 2 | [Họ tên 2] | [MSSV 2] | Observability & Evaluation / Corruption Flow | `observability/quality.py`, `evaluation/testset.py`, `evaluation/metrics.py`, `pipelines/corruption_flow.py` |
+| 2 | Nguyễn Tiến Lượng | 2A202602378 | Observability & Evaluation / Corruption Flow | `observability/quality.py`, `evaluation/testset.py`, `evaluation/metrics.py`, `pipelines/corruption_flow.py` |
 
 ## 2. Tóm tắt kết quả
 
@@ -255,5 +255,5 @@ Kết luận nhân quả có căn cứ từ artifact:
 - [x] Bảng metrics khớp với các file trong `data/results/`.
 - [x] Quality/freshness conclusions khớp với `data/quality/`.
 - [x] Các đường dẫn báo cáo và artifact truy cập được.
-- [ ] Mỗi thành viên đã hoàn thành báo cáo vai trò riêng.
+- [x] Mỗi thành viên đã hoàn thành báo cáo vai trò riêng.
 - [x] Không có `.env`, API key, token hoặc secret trong source, report, log hay ảnh.
