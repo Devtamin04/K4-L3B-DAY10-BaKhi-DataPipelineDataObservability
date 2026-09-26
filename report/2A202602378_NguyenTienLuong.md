@@ -9,7 +9,7 @@
 | Khóa/Lớp         | K4-L3B              |
 | Tên nhóm         | Bá Khí     |
 | Vai trò chính    | Observability & Evaluation / RAG Index / Corruption-Repair Flow |
-| Repository         | ttps://github.com/Devtamin04/K4-L3B-DAY10-BaKhi-DataPipelineDataObservability.git |
+| Repository         | https://github.com/Devtamin04/K4-L3B-DAY10-BaKhi-DataPipelineDataObservability.git |
 | Ngày hoàn thành | 2026-09-26               |
 
 ## 2. Vai trò và phạm vi công việc
