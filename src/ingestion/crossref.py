@@ -11,7 +11,20 @@ from core.config import Settings
 from core.utils import clean_abstract, normalize_whitespace, read_json, strip_markup, write_json
 
 CROSSREF_WORKS_URL = "https://api.crossref.org/works"
-CROSSREF_SELECT_FIELDS = "DOI,title,abstract,author,subject,published,created,deposited,URL,link"
+CROSSREF_SELECT_FIELDS = (
+    "DOI,title,abstract,author,subject,published,created,deposited,URL,link,"
+    "container-title,group-title,institution,publisher,type"
+)
+WORK_TYPE_LABELS = {
+    "journal-article": "Journal Article",
+    "posted-content": "Preprint",
+    "proceedings-article": "Conference Paper",
+    "book-chapter": "Book Chapter",
+    "report": "Report",
+    "dissertation": "Dissertation",
+}
+# Crossref venues used for preprints still under review; not a meaningful category.
+IGNORED_GROUP_TITLES = {"in review"}
 RETRYABLE_STATUS_CODES = {429, 500, 502, 503, 504}
 MAX_ATTEMPTS = 3
 REQUEST_TIMEOUT_SECONDS = 30
@@ -79,6 +92,23 @@ def _pdf_url(item: dict[str, Any], fallback: str) -> str:
     return fallback
 
 
+def _venue(item: dict[str, Any]) -> str:
+    candidates = [_clean_text(item.get("container-title")), _clean_text(item.get("group-title"))]
+    candidates += [_clean_text(inst.get("name")) for inst in item.get("institution") or [] if isinstance(inst, dict)]
+    candidates.append(_clean_text(item.get("publisher")))
+    return next((name for name in candidates if name and name.lower() not in IGNORED_GROUP_TITLES), "")
+
+
+def _derive_categories(item: dict[str, Any]) -> list[str]:
+    """Use Crossref `subject` when present; most live records omit it, so fall back to venue + work type."""
+    subjects = [category for category in (_clean_text(subject) for subject in item.get("subject") or []) if category]
+    if subjects:
+        return subjects
+    work_type = str(item.get("type") or "")
+    type_label = WORK_TYPE_LABELS.get(work_type) or work_type.replace("-", " ").title()
+    return [category for category in dict.fromkeys((_venue(item), type_label)) if category]
+
+
 def _parse_item(item: dict[str, Any]) -> PaperRecord | None:
     doi = normalize_whitespace(str(item.get("DOI") or ""))
     title = _clean_text(item.get("title"))
@@ -87,8 +117,7 @@ def _parse_item(item: dict[str, Any]) -> PaperRecord | None:
     if not doi or not title or not summary or not published:
         return None
 
-    categories = [_clean_text(subject) for subject in item.get("subject") or []]
-    categories = [category for category in categories if category]
+    categories = _derive_categories(item)
     abs_url = item.get("URL") or f"https://doi.org/{doi}"
     return PaperRecord(
         paper_id=doi,
