@@ -7,7 +7,7 @@ from typing import Any
 
 import pandas as pd
 
-from core.utils import compact_join, normalize_whitespace, strip_markup
+from core.utils import clean_abstract, compact_join, normalize_whitespace, strip_markup
 from ingestion.crossref import PaperRecord
 
 CLEAN_COLUMNS = [
@@ -79,7 +79,7 @@ def build_clean_dataframe(records: list[PaperRecord], run_date: datetime) -> pd.
         raw = asdict(record) if is_dataclass(record) else dict(record)
         paper_id = normalize_whitespace(str(raw.get("paper_id") or ""))
         title = strip_markup(raw.get("title"))
-        summary = strip_markup(raw.get("summary"))
+        summary = clean_abstract(raw.get("summary"))
         published = _parse_date(raw.get("published"))
         if not paper_id or not title or not summary or published is None:
             continue

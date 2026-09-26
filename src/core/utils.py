@@ -39,16 +39,22 @@ def normalize_whitespace(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip()
 
 
-_JATS_TITLE_PATTERN = re.compile(r"<jats:title>.*?</jats:title>", re.DOTALL | re.IGNORECASE)
+_HEADING_PATTERN = re.compile(r"<(jats:)?title>.*?</(jats:)?title>", re.DOTALL | re.IGNORECASE)
 _TAG_PATTERN = re.compile(r"<[^>]+>")
+_ABSTRACT_LABEL_PATTERN = re.compile(r"^(abstract|summary)\s*[:.\-–—]\s*", re.IGNORECASE)
 
 
 def strip_markup(value: Any) -> str:
-    """Drop JATS headings and XML/HTML tags, unescape entities, collapse whitespace. Non-strings become ""."""
+    """Drop (JATS) headings and XML/HTML tags, unescape entities, collapse whitespace. Non-strings become ""."""
     if not isinstance(value, str):
         return ""
-    without_headings = _JATS_TITLE_PATTERN.sub(" ", value)
+    without_headings = _HEADING_PATTERN.sub(" ", value)
     return normalize_whitespace(html.unescape(_TAG_PATTERN.sub(" ", without_headings)))
+
+
+def clean_abstract(value: Any) -> str:
+    """strip_markup plus removal of an inline leading label such as "Abstract - " or "Summary:"."""
+    return _ABSTRACT_LABEL_PATTERN.sub("", strip_markup(value))
 
 
 def safe_slug(value: str) -> str:

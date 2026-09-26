@@ -8,7 +8,7 @@ from typing import Any
 import requests
 
 from core.config import Settings
-from core.utils import normalize_whitespace, read_json, strip_markup, write_json
+from core.utils import clean_abstract, normalize_whitespace, read_json, strip_markup, write_json
 
 CROSSREF_WORKS_URL = "https://api.crossref.org/works"
 CROSSREF_SELECT_FIELDS = "DOI,title,abstract,author,subject,published,created,deposited,URL,link"
@@ -82,7 +82,7 @@ def _pdf_url(item: dict[str, Any], fallback: str) -> str:
 def _parse_item(item: dict[str, Any]) -> PaperRecord | None:
     doi = normalize_whitespace(str(item.get("DOI") or ""))
     title = _clean_text(item.get("title"))
-    summary = _clean_text(item.get("abstract"))
+    summary = clean_abstract(item.get("abstract"))
     published = _first_date(item, ("published", "published-print", "published-online", "issued", "created"))
     if not doi or not title or not summary or not published:
         return None

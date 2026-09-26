@@ -1,173 +1,118 @@
 {
+  "report_name": "test",
+  "generated_at": "2026-09-26T03:10:04+00:00",
+  "gx_version": "1.23.2",
+  "row_count": 24,
   "success": true,
-  "results": [
-    {
-      "success": true,
-      "expectation_config": {
-        "type": "expect_table_row_count_to_be_between",
-        "kwargs": {
-          "batch_id": "test_source-test_asset",
-          "min_value": 1,
-          "max_value": 1000
-        },
-        "meta": {},
-        "id": "1e659a94-d341-40a2-b8a4-c9ab7e637375",
-        "severity": "critical"
-      },
-      "result": {
-        "observed_value": 24
-      },
-      "meta": {},
-      "exception_info": {
-        "raised_exception": false,
-        "exception_traceback": null,
-        "exception_message": null
-      }
-    },
-    {
-      "success": true,
-      "expectation_config": {
-        "type": "expect_column_values_to_not_be_null",
-        "kwargs": {
-          "batch_id": "test_source-test_asset",
-          "column": "paper_id"
-        },
-        "meta": {},
-        "id": "bfb25d52-8f8e-4b65-af7e-5a1ad0ea8283",
-        "severity": "critical"
-      },
-      "result": {
-        "element_count": 24,
-        "unexpected_count": 0,
-        "unexpected_percent": 0.0,
-        "partial_unexpected_list": [],
-        "partial_unexpected_counts": [],
-        "partial_unexpected_index_list": []
-      },
-      "meta": {},
-      "exception_info": {
-        "raised_exception": false,
-        "exception_traceback": null,
-        "exception_message": null
-      }
-    },
-    {
-      "success": true,
-      "expectation_config": {
-        "type": "expect_column_values_to_be_unique",
-        "kwargs": {
-          "batch_id": "test_source-test_asset",
-          "column": "paper_id"
-        },
-        "meta": {},
-        "id": "c25cc309-c583-4a8a-8aee-e9328c87edb2",
-        "severity": "critical"
-      },
-      "result": {
-        "element_count": 24,
-        "unexpected_count": 0,
-        "unexpected_percent": 0.0,
-        "partial_unexpected_list": [],
-        "missing_count": 0,
-        "missing_percent": 0.0,
-        "unexpected_percent_total": 0.0,
-        "unexpected_percent_nonmissing": 0.0,
-        "partial_unexpected_counts": [],
-        "partial_unexpected_index_list": []
-      },
-      "meta": {},
-      "exception_info": {
-        "raised_exception": false,
-        "exception_traceback": null,
-        "exception_message": null
-      }
-    },
-    {
-      "success": true,
-      "expectation_config": {
-        "type": "expect_column_values_to_not_be_null",
-        "kwargs": {
-          "batch_id": "test_source-test_asset",
-          "column": "title"
-        },
-        "meta": {},
-        "id": "1efb4858-29d4-4174-a4fa-538bedd5c838",
-        "severity": "critical"
-      },
-      "result": {
-        "element_count": 24,
-        "unexpected_count": 0,
-        "unexpected_percent": 0.0,
-        "partial_unexpected_list": [],
-        "partial_unexpected_counts": [],
-        "partial_unexpected_index_list": []
-      },
-      "meta": {},
-      "exception_info": {
-        "raised_exception": false,
-        "exception_traceback": null,
-        "exception_message": null
-      }
-    },
-    {
-      "success": true,
-      "expectation_config": {
-        "type": "expect_column_value_lengths_to_be_between",
-        "kwargs": {
-          "batch_id": "test_source-test_asset",
-          "column": "summary",
-          "min_value": 10,
-          "max_value": 5000
-        },
-        "meta": {},
-        "id": "24239db5-f69a-40df-87d6-fbd7a564097e",
-        "severity": "critical"
-      },
-      "result": {
-        "element_count": 24,
-        "unexpected_count": 0,
-        "unexpected_percent": 0.0,
-        "partial_unexpected_list": [],
-        "missing_count": 0,
-        "missing_percent": 0.0,
-        "unexpected_percent_total": 0.0,
-        "unexpected_percent_nonmissing": 0.0,
-        "partial_unexpected_counts": [],
-        "partial_unexpected_index_list": []
-      },
-      "meta": {},
-      "exception_info": {
-        "raised_exception": false,
-        "exception_traceback": null,
-        "exception_message": null
-      }
-    }
-  ],
-  "suite_name": "test_suite",
-  "suite_parameters": {},
   "statistics": {
-    "evaluated_expectations": 5,
-    "successful_expectations": 5,
+    "evaluated_expectations": 10,
+    "successful_expectations": 10,
     "unsuccessful_expectations": 0,
     "success_percent": 100.0
   },
-  "meta": {
-    "great_expectations_version": "1.23.2",
-    "batch_spec": {
-      "batch_data": "PandasDataFrame"
+  "failed_checks": [],
+  "checks": [
+    {
+      "expectation": "expect_table_row_count_to_be_between",
+      "column": null,
+      "kwargs": {
+        "min_value": 20,
+        "max_value": 24
+      },
+      "success": true,
+      "observed_value": 24,
+      "unexpected_count": null,
+      "unexpected_percent": null
     },
-    "batch_markers": {
-      "ge_load_time": "20260926T025839.172829Z",
-      "pandas_data_fingerprint": "6c1c5d2426f318d3879b991ea3f8949e"
+    {
+      "expectation": "expect_column_values_to_not_be_null",
+      "column": "paper_id",
+      "kwargs": {},
+      "success": true,
+      "observed_value": null,
+      "unexpected_count": 0,
+      "unexpected_percent": 0.0
     },
-    "active_batch_definition": {
-      "datasource_name": "test_source",
-      "data_connector_name": "fluent",
-      "data_asset_name": "test_asset",
-      "batch_identifiers": {
-        "dataframe": "<DATAFRAME>"
-      }
+    {
+      "expectation": "expect_column_values_to_be_unique",
+      "column": "paper_id",
+      "kwargs": {},
+      "success": true,
+      "observed_value": null,
+      "unexpected_count": 0,
+      "unexpected_percent": 0.0
+    },
+    {
+      "expectation": "expect_column_values_to_not_be_null",
+      "column": "title",
+      "kwargs": {},
+      "success": true,
+      "observed_value": null,
+      "unexpected_count": 0,
+      "unexpected_percent": 0.0
+    },
+    {
+      "expectation": "expect_column_value_lengths_to_be_between",
+      "column": "title",
+      "kwargs": {
+        "min_value": 8
+      },
+      "success": true,
+      "observed_value": null,
+      "unexpected_count": 0,
+      "unexpected_percent": 0.0
+    },
+    {
+      "expectation": "expect_column_values_to_not_be_null",
+      "column": "summary",
+      "kwargs": {},
+      "success": true,
+      "observed_value": null,
+      "unexpected_count": 0,
+      "unexpected_percent": 0.0
+    },
+    {
+      "expectation": "expect_column_value_lengths_to_be_between",
+      "column": "summary",
+      "kwargs": {
+        "min_value": 100,
+        "max_value": 5000
+      },
+      "success": true,
+      "observed_value": null,
+      "unexpected_count": 0,
+      "unexpected_percent": 0.0
+    },
+    {
+      "expectation": "expect_column_values_to_not_be_null",
+      "column": "published",
+      "kwargs": {},
+      "success": true,
+      "observed_value": null,
+      "unexpected_count": 0,
+      "unexpected_percent": 0.0
+    },
+    {
+      "expectation": "expect_column_values_to_not_be_null",
+      "column": "text_for_embedding",
+      "kwargs": {},
+      "success": true,
+      "observed_value": null,
+      "unexpected_count": 0,
+      "unexpected_percent": 0.0
+    },
+    {
+      "expectation": "expect_column_values_to_be_between",
+      "column": "age_days",
+      "kwargs": {
+        "mostly": 0.75,
+        "min_value": 0.0,
+        "max_value": 180.0
+      },
+      "success": true,
+      "observed_value": null,
+      "unexpected_count": 0,
+      "unexpected_percent": 0.0
     }
-  },
-  "id": null
+  ]
 }
